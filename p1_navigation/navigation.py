@@ -89,7 +89,8 @@ for i_episode in range(1, n_episodes+1):
             axes[1].set_ylabel('Loss', color='b')
             axes[1].grid()
             plt.tight_layout()
-            plt.show()
+            # plt.show()
+            plt.savefig(f"figures/episode_{i_episode}.png")
         except:
             pass
     if np.mean(scores_window) >= 13.0:
