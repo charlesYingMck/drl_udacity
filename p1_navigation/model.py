@@ -18,13 +18,12 @@ class QNetwork(nn.Module):
         """
         super(QNetwork, self).__init__()
         self.seed = torch.manual_seed(seed)
-        self.fc1 = nn.Linear(state_size, 32)
-        self.fc2 = nn.Linear(32, 32)
-        self.out = nn.Linear(32, action_size)
-        self.bn = nn.BatchNorm1d(num_features=state_size)
+        self.fc1 = nn.Linear(state_size, 64)
+        self.fc2 = nn.Linear(64, 64)
+        self.out = nn.Linear(64, action_size)
 
     def forward(self, state):
         """Build a network that maps state -> action values."""
-        x = F.relu(self.fc1(self.bn(state)))
+        x = F.relu(self.fc1(state))
         x = F.relu(self.fc2(x))
         return self.out(x)
